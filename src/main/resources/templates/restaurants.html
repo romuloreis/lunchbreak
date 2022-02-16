@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+   <a th:href="@{/admin/restaurants/create}">New Restaurant</a>
+
+   <table>
+       <th>
+           <td>Name</td>
+           <td>Description</td>
+       </th>
+       <tr th:each="restaurant : ${restaurants}">
+            <td>[[${restaurant.name}]]</td>
+            <td>[[${restaurant.description}]]</td>
+            <td>
+               <a th:href="@{/admin/restaurants/edit/{id}(id = ${restaurant.id})}">update</a>
+               <a th:href="@{/admin/restaurants/delete/{id}(id = ${restaurant.id})}">remove</a>
+            </td>
+       </tr>
+   </table>
+
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+
+</body>
+</html>

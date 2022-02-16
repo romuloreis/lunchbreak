@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Result</title>
+    </head>
+    <body>
+        <h1>Lunch Break</h1>
+        <h2>Result</h2>
+      
+        <div th:if="${winner != null}">
+            <h2 th:text="${winner.getName} + ' was the most voted restaurant today!'"></h2>
+        </div>
+        <div th:if="${winner == null}">
+            <h2 th:text="'There is still no winner today'"></h2>
+        </div>       
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </body>
+</html>

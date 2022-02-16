@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head> 
+    <title>Updating Information</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+    <h1>Restaurant Info. Update</h1>
+    <form action="#" th:action="@{/admin/restaurants/save}" method="POST" th:object"${restaurant}">
+        <input type="hidden" th:field="*{restaurant.id}">
+        <input type="text" th:field="*{restaurant.name}"> 
+        <input type="text" th:field="*{restaurant.description}">
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>

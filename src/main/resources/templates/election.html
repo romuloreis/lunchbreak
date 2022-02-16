@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head> 
+    <title>Lunch Break Voting Painel</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div th:if="${#httpServletRequest.remoteUser != null}">
+        <h1 th:text="${#httpServletRequest.remoteUser} + ' ' + ${hasUserVotedMessage} + '!'"></h1>
+    </div>
+   
+    <div th:if="${mostVoted!=null && mostVoted.getVotes > 0}">
+        <h2 th:text="'Current Most Voted Restaurant: ' + ${mostVoted.getName} + ' Total Votes: ' + ${mostVoted.getVotes}"></h2>
+    </div>
+
+    <table>
+        <th>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Votes</td>
+        </th>
+        <tr th:each="restaurant : ${restaurants}">
+            <td>[[${restaurant.name}]]</td>
+            <td>[[${restaurant.description}]]</td>
+            <td>[[${restaurant.votes}]]</td>
+            <td>
+                <div th:if="${hasUserVotedMessage}">
+                    <a th:href="@{/election/restaurants/vote/{id}(id = ${restaurant.id})}">vote</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+
+</body>
+</html>

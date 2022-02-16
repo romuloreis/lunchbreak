@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Spring Security Example</title>
+    </head>
+    <body>
+        <h1>Lunch Break</h1>
+        <p>Let us know what you wanna have for lunch!<br>Vote in your favorite restaurant for today's lunch.</p>
+        <p>You can vote once a day, everyday until 11:30 AM.</p>
+        <div sec:authorize="isAuthenticated()">
+          </div>
+          <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <p>As administrrator you are able to register new restaurants, update their information or remove from Lunch Break Application.</p>
+            <p>Click <a th:href="@{/admin/restaurants}">here</a> to manage the restaurants.</p>
+          </div>
+          <div sec:authorize="hasRole('ROLE_USER')">
+            <p>Click <a th:href="@{/election/restaurants}">here</a> to see the restaurants avaiable for today's lunch.</p>
+        </div>      
+    </body>
+</html>

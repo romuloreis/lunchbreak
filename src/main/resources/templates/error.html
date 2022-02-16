@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Ops...</title>
+    </head>
+    <body>
+        <h1>Something went wrong</h1>
+        <div th:if="${errorMessage != null}">
+          <p th:text="${errorMessage}"></p>
+        </div>
+    </body>
+</html>
